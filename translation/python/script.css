@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+.error{
+        color:red;
+}
+p{
+	display:inline;
+}

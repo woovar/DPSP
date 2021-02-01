@@ -1,0 +1,87 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+#RewriteCond %{REQUEST_URI} ^/cp/.*$
+#RewriteRule ^cp(.*)$ https://paulscholten.eu/$1 
+
+
+	#RewriteCond %{HTTPS} !=on
+	#RewriteCond %{REQUEST_URI} !^(.*)?wp-login\.php(.*)$
+	#RewriteCond %{REQUEST_URI} !^(.*)?wp-admin$
+	#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L, R=301]
+
+
+	#RewriteRule ^cp/(.*)$ https://paulscholten.eu/$1 [R=301,L]
+	RewriteCond %{HTTPS} off
+	RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+
+
+	RewriteCond %{REQUEST_URI} !=/server-status
+	  RewriteCond %{REQUEST_URI} /+[^\.]+$
+	  RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+        
+
+#	RewriteCond %{REQUEST_URI} !^(.*)?wp-login\.php(.*)$
+#        RewriteCond %{REQUEST_URI} !^(.*)?wp-admin$
+ 
+ 
+#    RewriteCond %{HTTP_HOST} !^www\.paulscholten\.eu [NC]
+#    RewriteRule ^(.*)$ http://www\.paulscholten\.eu/$1 [L,R=301]
+
+#	RedirectMatch 301 ^/cp/(.*)$ /$1
+	Redirect 301 "/public/paulscholten/media/file/pdfbestanden/FinalFunctionalSpecification-versie 6-20130208-1430.pdf" /cp/wp-content/uploads/2013/09/FinalFunctionalSpecification-versie-6-20130211.pdf
+	RedirectMatch 301 ^/translation-in-progress.html$ /
+	RedirectMatch 301 ^/news\/?$ /
+	RedirectMatch 301 ^/dpsp\/?$ /
+	RedirectMatch 301 ^/policies\/?$ /
+	RedirectMatch 301 ^/english\/?$ /dpsp-annual-en/
+	RedirectMatch 301 ^/preprints\/?$ /
+	RedirectMatch 301 ^/licenses\/?$ /
+	RedirectMatch 301 ^/about-project\/?$ /project/
+	RedirectMatch 301 ^/support-financially\/?$ /
+	RedirectMatch 301 ^/een-boek\/?$ /
+	RedirectMatch 301 ^/index-of-names\/?$ /
+	RedirectMatch 301 ^/hfst-1oud-ambewerk\/?$ /hfst-1oud-ambewerkt/
+	RedirectMatch 301 ^/en\/?$ /dpsp-annual-en/
+	RedirectMatch 301 ^/research-vragen.html$ /
+	RedirectMatch 301 ^/public/paulscholten/ /
+	RedirectMatch 301 ^/paul-scholtens-theory.html$ /theory/
+	RedirectMatch 301 ^/blog.html$ /   
+  	RedirectMatch 301 ^/research-antwoord.html$ /   
+	RedirectMatch 301 ^/introduction.html$ /    
+	RedirectMatch 301 ^/bibliography.html$ /bibliography  
+    RedirectMatch 301 ^/disclaimer.html$ /disclaimer  
+    RedirectMatch 301 ^/photobook.html$ /biography  
+    RedirectMatch 301 ^/contact.html$ /contact  
+    RedirectMatch 301 ^/projecthistory.html$ /about-project
+    RedirectMatch 301 ^/news.html$ /news
+    RedirectMatch 301 ^/dutch-sources.html$ /downloads
+    RedirectMatch 301 ^/collected-papers.html$ /downloads
+    RedirectMatch 301 ^/paul-scholten.html$ /biography
+    RedirectMatch 301 ^/dutch-french.html$ /dutch-french
+    RedirectMatch 301 ^/dutch-english.html$ /dutch-english
+    RedirectMatch 301 ^/current-initiatives.html$ /current-initiatives
+    RedirectMatch 301 ^/main-sources.html$ /downloads
+    RedirectMatch 301 ^/french-sources.html$ /downloads
+    RedirectMatch 301 ^/project-organisation.html$ /about-project
+    RedirectMatch 301 ^/indonesian-sources.html$ /downloads
+    RedirectMatch 301 ^/thesaurus-and-abbreviations.html$ /thesaurus
+    
+    
+    
+	RewriteCond %{REQUEST_URI} !=/server-status
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+
+
+#AuthUserFile /var/.htpasswddpsp
+#AuthGroupFile /dev/null
+#AuthName "login"
+#AuthType Basic
+
+#<Limit GET>
+#require valid-user
+#</Limit>

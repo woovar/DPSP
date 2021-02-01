@@ -1,0 +1,65 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+<<<<<<< .mine
+RewriteCond %{REQUEST_URI} !=/server-status
+=======
+	RewriteCond %{REQUEST_URI} !=/server-status
+	  RewriteCond %{REQUEST_URI} /+[^\.]+$
+	  RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+
+
+>>>>>>> .r492
+    RewriteCond %{HTTP_HOST} !^www\.paulscholten\.eu [NC]
+    RewriteRule ^(.*)$ http://www\.paulscholten\.eu/$1 [L,R=301]
+
+<<<<<<< .mine
+RewriteCond %{REQUEST_URI} !=/server-status
+ RewriteCond %{REQUEST_URI} /+[^\.]+$
+ RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+=======
+    RewriteCond %{REQUEST_URI} /+[^\.]+$
+    RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+>>>>>>> .r492
+
+	RedirectMatch 301 ^/public/paulscholten/ /
+	RedirectMatch 301 ^/paul-scholtens-theory.html$ /theory/
+	RedirectMatch 301 ^/blog.html$ /   
+  	RedirectMatch 301 ^/research-antwoord.html$ /   
+	RedirectMatch 301 ^/introduction.html$ /    
+	RedirectMatch 301 ^/bibliography.html$ /bibliography  
+    RedirectMatch 301 ^/disclaimer.html$ /disclaimer  
+    RedirectMatch 301 ^/photobook.html$ /biography  
+    RedirectMatch 301 ^/contact.html$ /contact  
+    RedirectMatch 301 ^/projecthistory.html$ /about-project
+    RedirectMatch 301 ^/news.html$ /news
+    RedirectMatch 301 ^/dutch-sources.html$ /downloads
+    RedirectMatch 301 ^/collected-papers.html$ /downloads
+    RedirectMatch 301 ^/paul-scholten.html$ /biography
+    RedirectMatch 301 ^/dutch-french.html$ /dutch-french
+    RedirectMatch 301 ^/dutch-english.html$ /dutch-english
+    RedirectMatch 301 ^/current-initiatives.html$ /current-initiatives
+    RedirectMatch 301 ^/main-sources.html$ /downloads
+    RedirectMatch 301 ^/french-sources.html$ /downloads
+    RedirectMatch 301 ^/project-organisation.html$ /about-project
+    RedirectMatch 301 ^/indonesian-sources.html$ /downloads
+    RedirectMatch 301 ^/thesaurus-and-abbreviations.html$ /thesaurus
+    
+    
+    
+ RewriteCond %{REQUEST_URI} !=/server-status
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+
+
+#AuthUserFile /var/.htpasswddpsp
+#AuthGroupFile /dev/null
+#AuthName "login"
+#AuthType Basic
+
+#<Limit GET>
+#require valid-user
+#</Limit>

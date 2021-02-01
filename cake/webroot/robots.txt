@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /cp/
+Disallow: /research/wp-admin/
+Disallow: /public/paulscholten/

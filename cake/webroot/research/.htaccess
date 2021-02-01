@@ -1,0 +1,34 @@
+
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /research/
+
+
+
+RewriteCond %{REQUEST_FILENAME} research\/?$
+Rewritecond %{query_string} ^$
+RewriteRule ^(.*)$  / [L,R=301]
+
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /research/index.php [L]
+
+RewriteCond %{REQUEST_URI} 	 !article\/(.*)\/pdf\/$
+RewriteCond %{REQUEST_FILENAME} !research\/wp-admin\/
+RewriteCond %{REQUEST_FILENAME} !research\/wp-includes\/
+RewriteCond %{REQUEST_FILENAME} !research\/wp-content\/
+RewriteCond %{REQUEST_FILENAME} !research\/wp-login.php
+RewriteCond %{REQUEST_FILENAME} !research\/searchreplacedb2.php
+RewriteCond %{REQUEST_FILENAME} research\/
+Rewritecond %{query_string} !^post_type
+Rewritecond %{query_string} !^json
+RewriteRule ^(.*)$  /$1? [L,R=301]
+
+
+
+</IfModule>
+
+# END WordPress
